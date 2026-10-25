@@ -4,7 +4,23 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="color-scheme" content="light dark" />
-<link rel="icon" href="data:," />
+<meta name="description" content="JUSTRUCKS Giveaway #001: win a 2025 Toyota Tacoma TRD Off-Road in Bronze Oxide. Free entry route always open — no purchase necessary. Plus 208 Tacoma products: hoodies, tees, canvas prints, poster packs and VIP." />
+<meta name="theme-color" content="#121417" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="JUSTRUCKS" />
+<meta property="og:title" content="Win a 2025 Toyota Tacoma TRD Off-Road — JUSTRUCKS Giveaway #001" />
+<meta property="og:description" content="One truck. One winner. Enter free (no purchase necessary) or stack entries with every order — 10 entries per $1 at launch, and 1,000 free entries with the app download." />
+<meta property="og:url" content="https://justrucksinc.com/" />
+<meta property="og:image" content="https://justrucksinc.com/assets/tacoma-hero.jpg" />
+<meta property="og:image:alt" content="2025 Toyota Tacoma TRD Off-Road in Bronze Oxide on a hilltop overlook" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Win a 2025 Toyota Tacoma TRD Off-Road — JUSTRUCKS" />
+<meta name="twitter:description" content="JUSTRUCKS Giveaway #001. Free entry route always open — no purchase necessary. 10 entries per $1 on merch at launch." />
+<meta name="twitter:image" content="https://justrucksinc.com/assets/tacoma-hero.jpg" />
 <title>JUSTRUCKS — Win a 2025 Toyota Tacoma TRD Off-Road</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -325,6 +341,28 @@
   .qv-x{ position:absolute; top:10px; right:10px; z-index:5; width:38px; height:38px; border-radius:999px; border:0; background:rgba(10,11,13,.75); color:#fff; font-size:22px; line-height:1; cursor:pointer; }
   @media (max-width:700px){ .qv-panel{ grid-template-columns:1fr; } .qv-media img.main{ min-height:0; } }
 
+  /* ---------- Sticky mobile Enter CTA ---------- */
+  .sticky-cta{ position:fixed; left:0; right:0; bottom:0; z-index:70; display:none;
+    background:rgba(13,14,16,.97); border-top:2px solid var(--accent); color:var(--on-dark);
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom)); align-items:center; gap:12px;
+    transform:translateY(110%); transition:transform .32s ease; }
+  .sticky-cta.show{ transform:none; }
+  .sticky-cta .sc-txt{ flex:1; min-width:0; }
+  .sticky-cta .sc-txt b{ display:block; font-family:var(--font-disp); font-size:18px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; line-height:1.1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .sticky-cta .sc-txt span{ font-size:12.5px; color:var(--on-dark2); }
+  .sticky-cta .btn{ flex:none; }
+  @media (max-width:760px){
+    .sticky-cta{ display:flex; }
+    .toast{ bottom:calc(88px + env(safe-area-inset-bottom)); }
+    footer.site{ padding-bottom:98px; }
+  }
+  @media (prefers-reduced-motion: reduce){ .sticky-cta{ transition:none; } }
+
+  /* ---------- Scroll reveal (subtle, one-shot) ---------- */
+  .rv{ opacity:0; transform:translateY(10px); transition:opacity .55s ease, transform .55s ease; }
+  .rv.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .rv{ opacity:1; transform:none; transition:none; } }
+
   /* Mobile hero: photo on top, content stacked below it (placed last so it wins) */
   @media (max-width:640px){
     .hero img.hero-photo{ height:46vh; }
@@ -491,15 +529,15 @@
 
     <div class="gallery" aria-label="Truck photo gallery">
       <figure>
-        <img src="assets/tacoma-hero.jpg" alt="Placeholder photo: 2025 Toyota Tacoma TRD Off-Road on a hilltop, front three-quarter view" />
+        <img src="assets/tacoma-hero.jpg" alt="Placeholder photo: 2025 Toyota Tacoma TRD Off-Road on a hilltop, front three-quarter view" loading="lazy" decoding="async" />
         <figcaption><span>Front 3/4 · Hilltop</span><span class="ph">Placeholder photo</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/tacoma-desert.jpg" alt="Placeholder photo: accessorized fourth-generation Tacoma in the desert at sunrise" />
+        <img loading="lazy" decoding="async" src="assets/tacoma-desert.jpg" alt="Placeholder photo: accessorized fourth-generation Tacoma in the desert at sunrise" />
         <figcaption><span>Desert sunrise · accessorized example</span><span class="ph">Placeholder photo</span></figcaption>
       </figure>
       <figure>
-        <img src="assets/tacoma-rear.jpg" alt="Placeholder photo: Tacoma TRD Off-Road climbing a trail, rear three-quarter view" />
+        <img loading="lazy" decoding="async" src="assets/tacoma-rear.jpg" alt="Placeholder photo: Tacoma TRD Off-Road climbing a trail, rear three-quarter view" />
         <figcaption><span>Rear 3/4 · Trail</span><span class="ph">Placeholder photo</span></figcaption>
       </figure>
     </div>
@@ -726,6 +764,12 @@
 </div>
 <div class="toast" id="toast" role="status"></div>
 
+<!-- ================= STICKY MOBILE CTA ================= -->
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <div class="sc-txt"><b>Win this Tacoma</b><span>10 entries per $1 · free entry, no purchase needed</span></div>
+  <a class="btn small" href="#enter" tabindex="-1">Enter now</a>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -846,16 +890,16 @@
      9/9/…/10 across the 91 designs, identical on every load, and recorded on
      each apparel item as it.backArt so cards and quick-view always agree. */
   var SAMPLES = [
-    { src:"assets/back-art-01.png", name:"Park Badge", ratio:1600 / 1600 },
-    { src:"assets/back-art-02.png", name:"Retro Stripes", ratio:1920 / 1280 },
-    { src:"assets/back-art-03.png", name:"Minimal Hex", ratio:1280 / 1920 },
-    { src:"assets/back-art-04.png", name:"Tread Stamp", ratio:1600 / 1600 },
-    { src:"assets/back-art-05.png", name:"Desert Dusk", ratio:1920 / 1280 },
-    { src:"assets/back-art-06.png", name:"Tire Track", ratio:1920 / 1280 },
-    { src:"assets/back-art-07.png", name:"Night Topo", ratio:1600 / 1600 },
-    { src:"assets/back-art-08.png", name:"Garage Sign", ratio:1600 / 1600 },
-    { src:"assets/back-art-09.png", name:"Alpine Lake", ratio:2736 / 912 },
-    { src:"assets/back-art-10.png", name:"Sports Wordmark", ratio:1920 / 1280 }
+    { src:"assets/back-art-01.webp", name:"Park Badge", ratio:1600 / 1600 },
+    { src:"assets/back-art-02.webp", name:"Retro Stripes", ratio:1920 / 1280 },
+    { src:"assets/back-art-03.webp", name:"Minimal Hex", ratio:1280 / 1920 },
+    { src:"assets/back-art-04.webp", name:"Tread Stamp", ratio:1600 / 1600 },
+    { src:"assets/back-art-05.webp", name:"Desert Dusk", ratio:1920 / 1280 },
+    { src:"assets/back-art-06.webp", name:"Tire Track", ratio:1920 / 1280 },
+    { src:"assets/back-art-07.webp", name:"Night Topo", ratio:1600 / 1600 },
+    { src:"assets/back-art-08.webp", name:"Garage Sign", ratio:1600 / 1600 },
+    { src:"assets/back-art-09.webp", name:"Alpine Lake", ratio:2736 / 912 },
+    { src:"assets/back-art-10.webp", name:"Sports Wordmark", ratio:1920 / 1280 }
   ];
   function mulberry32(a){ return function(){ a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   var BACK_ASSIGN = (function(){
@@ -1370,6 +1414,45 @@
   function showToast(msg){
     var t = $("#toast"); t.textContent = msg; t.classList.add("show");
     clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2600);
+  }
+
+  /* ---------- Sticky mobile Enter CTA: appears once the hero scrolls off,
+     stays out of the way while the cart drawer or quick view is open.
+     CSS keeps it mobile-only; on desktop it never displays. ---------- */
+  var stickyCta = $("#stickyCta"), heroEl = $(".hero"), heroGone = false;
+  function refreshCta(){
+    if (!stickyCta) return;
+    var on = heroGone && !drawer.classList.contains("show") && !qv.classList.contains("show");
+    stickyCta.classList.toggle("show", on);
+    stickyCta.setAttribute("aria-hidden", on ? "false" : "true");
+    var a = stickyCta.querySelector("a");
+    if (a) a.setAttribute("tabindex", on ? "0" : "-1");
+  }
+  if (stickyCta && heroEl && "IntersectionObserver" in window){
+    new IntersectionObserver(function(en){
+      heroGone = !en[0].isIntersecting; refreshCta();
+    }, { threshold: 0.1 }).observe(heroEl);
+    if ("MutationObserver" in window){
+      var ctaMO = new MutationObserver(refreshCta);
+      ctaMO.observe(drawer, { attributes:true, attributeFilter:["class"] });
+      ctaMO.observe(qv, { attributes:true, attributeFilter:["class"] });
+    }
+  }
+
+  /* ---------- Scroll reveal: gentle one-shot fade/rise on section blocks.
+     Elements are only hidden once JS arms them, reduced-motion users and
+     no-IO browsers see everything immediately, and a safety timer reveals
+     anything still pending so content can never get stuck invisible. --- */
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if ("IntersectionObserver" in window && !reduceMotion){
+    var rvEls = $$(".sec-head, .spec-grid, .gallery, .step, .rule, .calc, .app-grid, .winners-empty, details.faq, .free-grid");
+    var rvIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add("in"); rvIO.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+    rvEls.forEach(function(el){ el.classList.add("rv"); rvIO.observe(el); });
+    setTimeout(function(){ rvEls.forEach(function(el){ el.classList.add("in"); }); }, 4000);
   }
 })();
 </script>
